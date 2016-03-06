@@ -3,4 +3,12 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "../lib"))
 require 'curiosity'
 
-Curiosity.new
+field = Field.new(x: 5, y: 5)
+c1 = Curiosity.new(x: 1, y: 2, facing: 'N', field: field)
+c2 = Curiosity.new(x: 3, y: 3, facing: 'E', field: field)
+
+c1.execute_command("LMLMLMLMM")
+p c1.position
+
+c2.execute_command("MMRMMRMRRM")
+p c2.position

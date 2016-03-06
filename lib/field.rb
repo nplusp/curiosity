@@ -1,4 +1,8 @@
+require 'validations/field_validations'
+
 class Field
+  include FieldValidations
+
   attr_accessor :x, :y, :rovers
 
   def initialize(x: 5, y: 5)
@@ -9,17 +13,7 @@ class Field
   end
 
   def add_rover(rover)
-    validate_rover_position(rover.x, rover.y)
+    validate_rover_initial_position(rover.x, rover.y)
     @rovers << rover
-  end
-
-  private
-
-  def validate_size(x, y)
-    raise ArgumentError.new("Field sizes should greater than zero") unless x > 0 || y > 0
-  end
-
-  def validate_rover_position(x, y)
-    raise ArgumentError.new("Invalid rover position") unless (1..@x) === x && (1..@y) === y
   end
 end

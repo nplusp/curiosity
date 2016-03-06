@@ -40,10 +40,13 @@ describe Field do
     end
 
     context "it doesn't" do
-      let(:curiosity) { Curiosity.new(x: 10, y: 10) }
-
       it "add an invalid rover" do
-        expect { field.add_rover(curiosity) }.to raise_error(ArgumentError, "Invalid rover position")
+        expect { field.add_rover(Curiosity.new(x: 10, y: 10)) }.to raise_error(ArgumentError, "Invalid rover position")
+      end
+
+      it "moves out of field" do
+        curiosity = Curiosity.new(field: field)
+        expect(curiosity.execute_command("RMMMMLMMMMM")).to raise_error(ArgumentError, "Invalid rover movement")
       end
     end
   end
