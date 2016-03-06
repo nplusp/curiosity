@@ -1,6 +1,10 @@
 module CuriosityValidations
-  def validate_rover_movement
-    raise ArgumentError.new("Invalid rover movement") unless (1..@field.x) === @x && (1..@field.y) === @y
+  def validate_x(x)
+    (1..@field.x) === x
+  end
+
+  def validate_y(y)
+    (1..@field.y) === y
   end
 
   private

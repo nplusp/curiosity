@@ -11,11 +11,9 @@ module CuriosityMovements
   end
 
   def move
-    @y = @y + 1 if @facing == 'N'
-    @y = @y - 1 if @facing == 'S'
-    @x = @x + 1 if @facing == 'E'
-    @x = @x - 1 if @facing == 'W'
-
-    # validate_rover_movement
+    @y = @y + 1 if @facing == 'N' && validate_y(@y + 1)
+    @y = @y - 1 if @facing == 'S' && validate_y(@y - 1)
+    @x = @x + 1 if @facing == 'E' && validate_x(@x + 1)
+    @x = @x - 1 if @facing == 'W' && validate_x(@x - 1)
   end
 end

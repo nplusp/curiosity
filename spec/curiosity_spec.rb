@@ -58,10 +58,10 @@ describe Curiosity do
         expect(curiosity.facing).to eql "N"
       end
 
-      it "moves with multiple commands" do
-        curiosity.execute_command("RMMMMLMMMMRR")
+      it "moves with multiple commands and don't get out of field" do
+        curiosity.execute_command("RMMMMMMLMMRRMMMMMMMMMM")
         expect(curiosity.x).to eql 5
-        expect(curiosity.y).to eql 5
+        expect(curiosity.y).to eql 1
         expect(curiosity.facing).to eql "S"
       end
     end
